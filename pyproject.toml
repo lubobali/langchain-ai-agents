@@ -1,0 +1,6 @@
+[tool.pytest.ini_options]
+testpaths = [
+    "assignment1_context_overflow",
+    "assignment2_infinite_researcher",
+    "assignment3_mcp_middleware",
+]
