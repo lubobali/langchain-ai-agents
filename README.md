@@ -1,5 +1,7 @@
 # LangChain AI Agents
 
+[Portfolio](https://lubobali.com) | [LuBot AI](https://lubot.ai) | [LinkedIn](https://www.linkedin.com/in/lubo-bali/recent-activity/all/)
+
 3 AI agents. 46 tests. 0 failures. Built to break, then fixed better than before.
 
 This repo contains 3 real world AI agent problems that happen in production every day, and the fixes that make them production ready. Not toy demos. Not tutorials. Actual patterns you can drop into your codebase today.
