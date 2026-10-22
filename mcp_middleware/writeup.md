@@ -1,4 +1,4 @@
-# Assignment 3: MCP Tool Overload — Writeup
+# MCP Tool Overload — Writeup
 
 ## Problem Diagnosis
 

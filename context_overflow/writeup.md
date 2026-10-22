@@ -1,4 +1,4 @@
-# Assignment 1: Context Overflow Tool — Writeup
+# Context Overflow Tool — Writeup
 
 ## Problem Diagnosis
 

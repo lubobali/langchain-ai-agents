@@ -1,11 +1,11 @@
 """
-Assignment 2: The Infinite Researcher
+The Infinite Researcher
 ======================================
 This research agent searches the web and compiles reports, but it NEVER STOPS.
 It keeps exploring deeper and deeper until it crashes or drains your API budget.
 
 Run this and observe the runaway behavior:
-    python starter.py
+    python broken_agent.py
 
 Your job: Add stopping conditions, cost controls, and fix the prompt.
 """

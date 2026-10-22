@@ -1,5 +1,5 @@
 """
-Assignment 1: Context Overflow Tool — Tests
+Context Overflow Tool — Tests
 ============================================
 RECR Step R: Define requirements via tests BEFORE implementation.
 All tests use real OpenAI API calls.
@@ -9,7 +9,7 @@ import json
 import pytest
 
 # These will import from solution.py once we build it
-from assignment1_context_overflow.solution import (
+from context_overflow.solution import (
     lookup_order_info,
     create_agent,
     ORDERS_DB,
@@ -104,7 +104,7 @@ class TestSafeguards:
 
 
 # =========================================================================
-# Layer 4: Full agent pipeline tests (burns bootcamp tokens!)
+# Layer 4: Full agent pipeline tests (spends real API tokens!)
 # =========================================================================
 
 

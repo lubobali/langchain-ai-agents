@@ -1,5 +1,5 @@
 """
-Assignment 2: The Infinite Researcher — Tests
+The Infinite Researcher — Tests
 ===============================================
 RECR Step R: Define requirements via tests BEFORE implementation.
 All LLM calls go through the OpenAI API.
@@ -9,8 +9,8 @@ Tool calls (web_search, read_webpage) are simulated — no real web requests.
 import time
 import pytest
 
-from assignment2_infinite_researcher import solution
-from assignment2_infinite_researcher.solution import BudgetManager
+from infinite_researcher import solution
+from infinite_researcher.solution import BudgetManager
 
 
 class TestAgentConvergence:

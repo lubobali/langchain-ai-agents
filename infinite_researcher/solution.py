@@ -1,5 +1,5 @@
 """
-Assignment 2: The Infinite Researcher — SOLUTION
+The Infinite Researcher — SOLUTION
 ==================================================
 Fix: Convergent prompt + hard limits + BudgetManager with per-step cost tracking.
 

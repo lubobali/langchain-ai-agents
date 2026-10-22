@@ -1,11 +1,11 @@
 """
-Assignment 3: MCP Tool Overload
+MCP Tool Overload
 ================================
 This agent connects to 3 MCP servers with 53 total tools.
 All tools are injected into every prompt, causing confusion, latency, and cost.
 
 Run this and observe the tool confusion:
-    python starter.py
+    python broken_agent.py
 
 Your job: Build middleware that dynamically selects the right tools per query.
 """

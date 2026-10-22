@@ -37,9 +37,9 @@ cp .env.example .env
 
 Run any agent:
 ```bash
-python assignment1_context_overflow/solution.py
-python assignment2_infinite_researcher/solution.py
-python assignment3_mcp_middleware/solution.py
+python context_overflow/solution.py
+python infinite_researcher/solution.py
+python mcp_middleware/solution.py
 ```
 
 Run all 46 tests:
@@ -91,7 +91,7 @@ AI agents that can use tools, track their own spending, and know when to stop. B
 
 ## What I Added On Top
 
-The original assignments asked for a fix and a writeup. I went further:
+Beyond the three fixes, I added:
 
 - 46 automated tests across all 3 agents using RECR (test-first) methodology
 - BudgetManager class with real time token tracking via LLM callbacks

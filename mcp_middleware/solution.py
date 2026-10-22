@@ -1,5 +1,5 @@
 """
-Assignment 3: MCP Tool Overload — SOLUTION
+MCP Tool Overload — SOLUTION
 ============================================
 Fix: Middleware that dynamically selects relevant tools per query.
 

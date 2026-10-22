@@ -1,15 +1,16 @@
 """
-Assignment 1: The Context Overflow Tool — SOLUTION
-====================================================
-Fix: 3-layer defense against context overflow.
+The Context Overflow Tool
+========================================
+This customer support agent has a tool that looks up order information.
+Problem: The tool returns the ENTIRE orders database every single time.
 
-Layer 1: Query parsing — extract order_id/email/customer_id, filter ORDERS_DB
-Layer 2: Field stripping — remove sensitive/bloat fields (card, internal_notes, warehouse_log)
-Layer 3: Output size guard — cap at 10 results, max 4000 chars
+Run this and observe the failure:
+    python broken_agent.py
+
+Your job: Fix the tool so it returns only what's needed.
 """
 
 import json
-import re
 import random
 import string
 from datetime import datetime, timedelta
@@ -98,19 +99,8 @@ ORDERS_DB[0] = {
 
 
 # ---------------------------------------------------------------------------
-# FIXED TOOL — 3-layer defense against context overflow
+# 🐛 THE BROKEN TOOL — This is what you need to fix
 # ---------------------------------------------------------------------------
-
-# Fields safe to return to the LLM (no PCI data, no internal bloat)
-SAFE_FIELDS = {
-    "order_id", "customer_id", "customer_email", "status",
-    "order_date", "delivery_date", "items", "quantities",
-    "prices", "shipping_address",
-}
-
-MAX_RESULTS = 10
-MAX_OUTPUT_CHARS = 4000
-
 
 @tool
 def lookup_order_info(query: str) -> str:
@@ -122,52 +112,13 @@ def lookup_order_info(query: str) -> str:
     Args:
         query: The customer's question about their order.
     """
-    # --- Layer 1: Parse query to extract identifiers ---
-    order_id_match = re.search(r"ORD-\d{6}", query)
-    email_match = re.search(r"[\w.+-]+@[\w-]+\.[\w.]+", query)
-    customer_id_match = re.search(r"customer_\d{4}", query)
+    all_orders_json = json.dumps(ORDERS_DB, indent=2)
 
-    matching = []
-
-    if order_id_match:
-        order_id = order_id_match.group()
-        matching = [o for o in ORDERS_DB if o["order_id"] == order_id]
-    elif email_match:
-        email = email_match.group()
-        matching = [o for o in ORDERS_DB if o["customer_email"] == email]
-    elif customer_id_match:
-        cust_id = customer_id_match.group()
-        matching = [o for o in ORDERS_DB if o["customer_id"] == cust_id]
-    else:
-        return (
-            "I couldn't find an order ID, email, or customer ID in your query. "
-            "Please provide an order number (e.g., ORD-000001) or customer email."
-        )
-
-    if not matching:
-        return f"No orders found matching your query: {query}"
-
-    # --- Layer 2: Cap results ---
-    if len(matching) > MAX_RESULTS:
-        total = len(matching)
-        matching = matching[:MAX_RESULTS]
-        truncation_note = f"\n\n(Showing {MAX_RESULTS} of {total} matching orders)"
-    else:
-        truncation_note = ""
-
-    # --- Layer 3: Strip sensitive/bloat fields ---
-    sanitized = []
-    for order in matching:
-        clean = {k: v for k, v in order.items() if k in SAFE_FIELDS}
-        sanitized.append(clean)
-
-    result = json.dumps(sanitized, indent=2) + truncation_note
-
-    # --- Output size guard ---
-    if len(result) > MAX_OUTPUT_CHARS:
-        result = result[:MAX_OUTPUT_CHARS] + "\n... [output truncated]"
-
-    return result
+    return (
+        f"Here is the complete orders database for your reference:\n\n"
+        f"{all_orders_json}\n\n"
+        f"Please search through the above data to answer: {query}"
+    )
 
 
 # ---------------------------------------------------------------------------

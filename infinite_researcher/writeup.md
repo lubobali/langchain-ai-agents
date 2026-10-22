@@ -1,4 +1,4 @@
-# Assignment 2: The Infinite Researcher — Writeup
+# The Infinite Researcher — Writeup
 
 ## Problem Diagnosis
 

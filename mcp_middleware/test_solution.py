@@ -1,5 +1,5 @@
 """
-Assignment 3: MCP Tool Overload — Tests
+MCP Tool Overload — Tests
 =========================================
 RECR Step R: Define requirements via tests BEFORE implementation.
 Tests cover: query classification, tool filtering, and full agent pipeline.
@@ -8,7 +8,7 @@ Tests cover: query classification, tool filtering, and full agent pipeline.
 import time
 import pytest
 
-from assignment3_mcp_middleware.solution import (
+from mcp_middleware.solution import (
     classify_query,
     select_tools,
     create_smart_agent,
@@ -126,7 +126,7 @@ class TestToolFiltering:
 
 
 # =========================================================================
-# Layer 3: Full agent pipeline tests (burns bootcamp tokens!)
+# Layer 3: Full agent pipeline tests (spends real API tokens!)
 # =========================================================================
 
 
